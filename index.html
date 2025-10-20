@@ -1,29 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Velha 2° Desenvolvimento</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-    <table>
-        <tr>
-            <td id="0"></td>
-            <td id="1"></td>
-            <td id="2"></td>
-        </tr>
-        <tr>
-            <td id="3"></td>
-            <td id="4"></td>
-            <td id="5"></td>
-        </tr>
-        <tr>
-            <td id="6"></td>
-            <td id="7"></td>
-            <td id="8"></td>
-        </tr>
-    </table>
+
+<body class="container_game">
+    <div class="game">
+        <table>
+            <tr>
+                <td id="0"></td>
+                <td id="1"></td>
+                <td id="2"></td>
+            </tr>
+            <tr>
+                <td id="3"></td>
+                <td id="4"></td>
+                <td id="5"></td>
+            </tr>
+            <tr>
+                <td id="6"></td>
+                <td id="7"></td>
+                <td id="8"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="menu_game">
+        <div class="menu" onclick="start()">
+            <img src="assets/play-icon.png" />
+        </div>
+        <div class="menu" onclick="pause()">
+            <img src="assets/10149821.png" />
+        </div>
+        <div class="menu" onclick="reload()">
+            <img src="assets/reload.png" />
+        </div>
+    </div>
+    <footer class="container_footer">
+        <div class="mensage_old">
+            <img src="assets/balao_de_conversa.png" />
+        </div>
+        <div class="old">
+            <img src="assets/Design_velhinha1.png" id="old_img" />
+        </div>
+    </footer>
 </body>
 <script src="main.js"></script>
+
 </html>
