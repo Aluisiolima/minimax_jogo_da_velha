@@ -1,34 +1,92 @@
-td {
-	border:  2px solid #333;
-	height:  100px;
-	width:  100px;
-	text-align:  center;
-	vertical-align:  middle;
-	font-family:  "Comic Sans MS", cursive, sans-serif;
-	font-size:  70px;
-	cursor: pointer;
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.container_game {
+    display: flex;
+    padding: 2%;
+    background: #0F6EBD;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.game {
+    flex: 70%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D9D9D9;
+}
+
+.menu_game {
+    flex: 20%;
+    padding: 1%;
+}
+
+.menu {
+    width: 100px;
+    height: 100px;
+    background: #D9D9D9;
+    margin: 2%;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%
 }
 
 table {
-	border-collapse: collapse;
-	position: absolute;
-	left: 50%;
-	margin-left: -155px;
-	top: 50px;
+    border-collapse: collapse;
+}
+
+td {
+    border: 10px solid #333;
+    height: 200px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 70px;
+    cursor: pointer;
 }
 
 table tr:first-child td {
-	border-top: 0;
+    border-top: 0;
 }
 
 table tr:last-child td {
-	border-bottom: 0;
+    border-bottom: 0;
 }
 
 table tr td:first-child {
-	border-left: 0;
+    border-left: 0;
 }
 
 table tr td:last-child {
-	border-right: 0;
+    border-right: 0;
+}
+
+
+.container_footer {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex: 100%;
+    background: #d9d9d9;
+    margin: 2%;
+}
+
+.old {
+    flex: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensage_old {
+    flex: 70%;
 }
