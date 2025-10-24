@@ -14,9 +14,18 @@ const aiPlayer = 'X';
 const humanPlayer = 'O';
 
 const cells = document.querySelectorAll('td');
+document.addEventListener("DOMContentLoaded", startGame);
+
+function activeMenu(index) {
+    document
+        .querySelectorAll(".menu")
+        .forEach((menu, i) => menu.classList.toggle("active", i == index))
+}
 
 function start() {
-    startGame();
+    cells.forEach(cell => {
+        cell.addEventListener('click', turnClick, false);
+    });
 }
 
 function pause() {
@@ -28,11 +37,14 @@ function pause() {
 function reload() {
     cells.forEach(cell => {
         cell.innerText = '';
-        cell.addEventListener('click', turnClick, false);
+        cell.removeEventListener('click', turnClick, false);
         cell.style.background = "none";
     });
+    startGame();
 }
+
 function delay(ms) {
+    pause();
     return new Promise(r => setTimeout(r, ms));
 }
 
@@ -42,12 +54,12 @@ function setOldImg(path) {
 
 function startGame() {
     board = Array.from(Array(9).keys());
-    cells.forEach(cell => {
-        cell.addEventListener('click', turnClick, false);
-    });
-    // const openingMoves = [0, 2, 4, 6, 8];
-    // const firstMove = openingMoves[Math.floor(Math.random() * openingMoves.length)];
-    // turn(firstMove, aiPlayer);
+    if ((Math.floor(Math.random() * 1000) % 2) === 0) {
+        const openingMoves = [0, 2, 4, 6, 8];
+        const firstMove = openingMoves[Math.floor(Math.random() * openingMoves.length)];
+        turn(firstMove, aiPlayer);
+        start();
+    }
 }
 
 async function turnClick(square) {
@@ -56,7 +68,7 @@ async function turnClick(square) {
         setOldImg("assets/Design_velhinha2.png");
         await delay(1000);
         setOldImg("assets/Design_velhinha4.png");
-        if (!checkWin(board, humanPlayer) && !checkTie()) turn(await bestSpot(), aiPlayer);
+        if (!checkWin(board, humanPlayer) && !checkTie()) turn(await bestSpot().finally(() => start()), aiPlayer);
         setOldImg("assets/Design_velhinha3.png");
     }
 }
@@ -96,7 +108,7 @@ function emptySquares() {
 }
 
 async function bestSpot() {
-    await delay(4000);
+    await delay(1000);
     return minimax(board, aiPlayer).index;
 }
 
