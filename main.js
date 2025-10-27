@@ -218,7 +218,7 @@ function loadStartScreen() {
             <input type="text" required placeholder="Digite seu Nome">
         </form>
         <div class="start_icon" onclick="startGame()">
-            <img src="/assets/pngwing.com.png">
+            <img src="assets/pngwing.com.png">
         </div>
     `);
 }
