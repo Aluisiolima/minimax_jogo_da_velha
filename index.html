@@ -8,45 +8,52 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="container_game">
-    <div class="game">
-        <table>
-            <tr>
-                <td id="0"></td>
-                <td id="1"></td>
-                <td id="2"></td>
-            </tr>
-            <tr>
-                <td id="3"></td>
-                <td id="4"></td>
-                <td id="5"></td>
-            </tr>
-            <tr>
-                <td id="6"></td>
-                <td id="7"></td>
-                <td id="8"></td>
-            </tr>
-        </table>
-    </div>
-    <div class="menu_game">
-        <div class="menu" onclick="start(); activeMenu(0);">
-            <img src="assets/play-icon.png" />
-        </div>
-        <div class="menu" onclick="pause(); activeMenu(1);">
-            <img src="assets/10149821.png" />
-        </div>
-        <div class="menu" onclick="reload(); activeMenu(2);">
-            <img src="assets/reload.png" />
+<body>
+    <div class="container_void">
+        <div class="box">
+
         </div>
     </div>
-    <footer class="container_footer">
-        <div class="mensage_old">
-            <img src="assets/balao_de_conversa.png" />
+    <div class="container_game">
+        <div class="game">
+            <table>
+                <tr>
+                    <td id="0"></td>
+                    <td id="1"></td>
+                    <td id="2"></td>
+                </tr>
+                <tr>
+                    <td id="3"></td>
+                    <td id="4"></td>
+                    <td id="5"></td>
+                </tr>
+                <tr>
+                    <td id="6"></td>
+                    <td id="7"></td>
+                    <td id="8"></td>
+                </tr>
+            </table>
         </div>
-        <div class="old">
-            <img src="assets/Design_velhinha1.png" id="old_img" />
+        <div class="menu_game">
+            <div class="menu" onclick="start(); activeMenu(0);">
+                <img src="assets/play-icon.png" />
+            </div>
+            <div class="menu" onclick="pause(); activeMenu(1);">
+                <img src="assets/10149821.png" />
+            </div>
+            <div class="menu" onclick="reload(); activeMenu(2);">
+                <img src="assets/reload.png" />
+            </div>
         </div>
-    </footer>
+        <footer class="container_footer">
+            <div class="mensage_old">
+                <img src="assets/balao_de_conversa.png" />
+            </div>
+            <div class="old">
+                <img src="assets/Design_velhinha1.png" id="old_img" />
+            </div>
+        </footer>
+    </div>
 </body>
 <script src="main.js"></script>
 

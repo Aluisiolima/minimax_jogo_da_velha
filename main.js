@@ -12,9 +12,8 @@ const winCombinations = [
 let board;
 const aiPlayer = 'X';
 const humanPlayer = 'O';
-
+let turns = [];
 const cells = document.querySelectorAll('td');
-document.addEventListener("DOMContentLoaded", startGame);
 
 function activeMenu(index) {
     document
@@ -52,9 +51,16 @@ function setOldImg(path) {
     document.getElementById("old_img").src = path;
 }
 
+function loadHtmlInContainerVoid(html) {
+    document.querySelector(".box").innerHTML = html;
+    document.querySelector(".container_void").style.display = "flex";
+}
+
 function startGame() {
     board = Array.from(Array(9).keys());
-    if ((Math.floor(Math.random() * 1000) % 2) === 0) {
+    turns = Array.from(Array(9).keys());
+    document.querySelector(".container_void").style.display = "none";
+    if ((Math.floor(Math.random() * 104) % 2) === 0) {
         const openingMoves = [0, 2, 4, 6, 8];
         const firstMove = openingMoves[Math.floor(Math.random() * openingMoves.length)];
         turn(firstMove, aiPlayer);
@@ -63,22 +69,24 @@ function startGame() {
 }
 
 async function turnClick(square) {
-    if (typeof board[square.target.id] === "number") {
-        turn(square.target.id, humanPlayer);
-        setOldImg("assets/Design_velhinha2.png");
-        await delay(1000);
-        setOldImg("assets/Design_velhinha4.png");
-        if (!checkWin(board, humanPlayer) && !checkTie()) turn(await bestSpot().finally(() => start()), aiPlayer);
-        setOldImg("assets/Design_velhinha3.png");
+    if (turns[turns.length - 1] != humanPlayer) {
+        if (typeof board[square.target.id] === "number") {
+            turn(square.target.id, humanPlayer);
+            setOldImg("assets/Design_velhinha2.png");
+            await delay(1000);
+            setOldImg("assets/Design_velhinha4.png");
+            if (!checkWin(board, humanPlayer) && !checkTie()) turn(await bestSpot().finally(() => start()), aiPlayer);
+            setOldImg("assets/Design_velhinha3.png");
+        }
     }
 }
 
 function turn(target, player) {
     board[target] = player;
     document.getElementById(target).innerText = player;
-
+    turns.push(player);
     let gameWon = checkWin(board, player);
-    if (gameWon) gameOver(gameWon)
+    if (gameWon) gameOver(gameWon);
 }
 
 function checkWin(board, player) {
@@ -182,3 +190,38 @@ function minimax(board, player) {
 
     return moves[bestMove];
 }
+
+async function showLoadingScreen() {
+    loadHtmlInContainerVoid(`
+        <p style="color: white">Carregando....</p>
+        <div class="bar">
+            <div class="fill">
+                <div class="load">
+                    <img src="assets/Design_carregando_velhinha.png" />
+                </div>
+                <div class="nload"></div>
+            </div>
+        </div>
+    `);
+
+    // Aguarda 5 segundos
+    await delay(5000);
+
+    // Depois, mostra a tela inicial
+    loadStartScreen();
+}
+
+// Tela inicial do jogo
+function loadStartScreen() {
+    loadHtmlInContainerVoid(`
+        <form method="post" action=".">
+            <input type="text" required placeholder="Digite seu Nome">
+        </form>
+        <div class="start_icon" onclick="startGame()">
+            <img src="/assets/pngwing.com.png">
+        </div>
+    `);
+}
+
+// Inicia tudo
+showLoadingScreen();
